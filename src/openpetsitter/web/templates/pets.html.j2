@@ -1,0 +1,17 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Pets</h1>
+<h2>Here you will find a list of your pets. </h2>
+{% endblock hgroup %}
+{% block main %}
+<div id="petlist">
+{% for pet in pets %}
+    <ul>
+    <li>Name: {{ pet.name }}</li>
+    <li>Type: {{ pet.pet_type }}</li>
+    <li>Age: {{ pet.age }}</li>
+    </ul>
+{% endfor %}
+</div>
+{% endblock main %}
+

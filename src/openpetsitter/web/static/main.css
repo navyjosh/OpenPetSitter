@@ -1,0 +1,55 @@
+:root {
+    --nav-width: 250px;    
+}
+
+* {
+ font-size: 1em;
+ font-family: Arial, Verdana, Helvetica;
+}
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-weight: normal;
+    text-align: left;
+    text-indent: 1em;
+}
+hgroup {
+    margin: auto;
+    text-align: center;    
+    
+}
+main {
+    margin: auto;
+}
+#body-container {
+    margin: auto;
+}
+#left-div {    
+    position:absolute;        
+    width: var(--nav-width)
+    
+}
+#right-div {
+    margin-left: var(--nav-width);
+    padding-left: 1em;
+}
+nav a{
+    display: block;    
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+    background: #EEE;
+}
+a:hover {
+    color: #EEE;
+    background-color: black;    
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;    
+}
