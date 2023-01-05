@@ -1,17 +1,32 @@
 {% extends "base.html.j2" %}
 {% block hgroup %}
-<h1>Pets</h1>
-<h2>Here you will find a list of your pets. </h2>
+<h1>My Pets</h1>
 {% endblock hgroup %}
 {% block main %}
-<div id="petlist">
+<div class="flex">
+<div class="items-container">
 {% for pet in pets %}
-    <ul>
-    <li>Name: {{ pet.name }}</li>
-    <li>Type: {{ pet.pet_type }}</li>
-    <li>Age: {{ pet.age }}</li>
-    </ul>
+    <div class="item-table">        
+            <div class="item-column c1">
+                <span>Name:</span>
+                <span>Type:</span>
+                <span>Birthday:</span>
+                <span>Age:</span>
+            </div>
+            <div class="item-column c2">
+                <span>{{ pet.name }}</span>
+                <span>{{ pet.pettype }}</span>                                
+                <span>{{ pet.dob.strftime('%x') }}</span>
+                <span>{{ pet.age }}</span>                                
+            </div>
+            <div class="item-action-column c3">
+                <a href="{{ url_for('edit_pet', pet_id=pet.id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{ url_for('delete_pet', pet_id=pet.id) }}"><i class="fa-solid fa-trash"></i></a>
+            </div>        
+    </div>
 {% endfor %}
+</div>
+    <span class="action-new"><a href="{{url_for('add_pet')}}"><i class="fa-solid fa-square-plus"></i></a></span>
 </div>
 {% endblock main %}
 

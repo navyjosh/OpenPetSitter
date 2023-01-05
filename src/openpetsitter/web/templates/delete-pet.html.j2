@@ -1,0 +1,14 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Delete Pet</h1>
+{% endblock hgroup %}
+{% block main %}
+<div><p>Are you sure you want to delete <b>{{ pet.name }}</b>?</p>
+<div>
+<form method="POST" action="{{ url_for('delete_pet', pet_id=pet.id) }}">
+    {{ form.csrf_token }}
+    {{ form.submit }}  
+</form>
+</div>
+{% endblock main %}
+

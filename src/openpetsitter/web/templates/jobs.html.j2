@@ -1,0 +1,37 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Manage Jobs</h1>
+<h2>Here is where you can manage jobs. Jobs are tasks that can be assigned to a sitter. These can be walking your pets, or watering your plants, or checking your mail, etc.</h2>
+{% endblock hgroup %}
+{% block main %}
+<div class="flex">
+<div class="items-container">
+{% for job in jobs %}
+    <div class="item-table">        
+            <div class="item-column c1">
+                <span>Title:</span>
+                <span>Description:</span>
+                <span>Date:</span>
+                <span>Time:</span>
+                <span>Pets:</span>
+                <span>Sitter:</span>
+            </div>
+            <div class="item-column c2">
+                <span>{{ job.title }}</span>
+                <span>{{ job.description }}</span>                                
+                <span>{{ job.date }}</span>
+                <span>{{ job.scheduled_time }}</span>                                
+                <span>{% if job.pets %}{% for pet in job.pets %}{{pet.name}}, {% endfor %}{% endif %}</span>
+                <span>{{ job.sitter }}</span>
+            </div>
+            <div class="item-action-column c3">
+                <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{ url_for('delete_job', job_id=job.id) }}"><i class="fa-solid fa-trash"></i></a>
+            </div>        
+    </div>
+{% endfor %}
+</div>
+    <span class="action-new"><a href="{{url_for('add_job')}}"><i class="fa-solid fa-square-plus"></i></a></span>
+</div>
+{% endblock main %}
+

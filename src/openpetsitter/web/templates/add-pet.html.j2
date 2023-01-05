@@ -1,0 +1,22 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Add New Pet</h1>
+{% endblock hgroup %}
+{% block main %}
+<div id="loginform">
+<form method="POST" action="{{ url_for('add_pet') }}">
+    {{ form.csrf_token }}    
+    <div class="container">
+    {{ form.name.label }} {{ form.name }}
+    {{ form.dob.label }} {{ form.dob }}
+    {{ form.pettype.label }} {{ form.pettype }}
+    {{ form.owner }}
+    {{ form.submit }}
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>    
+  </div>
+</form>
+</div>
+{% endblock main %}
+
