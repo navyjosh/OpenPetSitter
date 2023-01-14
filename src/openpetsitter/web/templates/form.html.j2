@@ -1,0 +1,41 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Edit Pet</h1>
+{% endblock hgroup %}
+{% block main %}
+<div class="form-container">
+  <form method="POST" action="{{ url_for('edit_pet', pet_id=pet.id) }}">
+        {{ form.csrf_token }}    
+        <div class="row">
+          <div class="col-25">
+            {{ form.name.label }}
+          </div>
+          <div class="col-75">
+            {{ form.name }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            {{ form.dob.label }} 
+          </div>
+          <div class="col-75">
+            {{ form.dob }} 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            {{ form.pettype.label }}                         
+          </div>
+          <div class="col-75">
+            {{ form.pettype }}                         
+          </div>
+        </div>           
+        <br />
+        <div class="row">
+          {{ form.submit }}
+        </div>          
+  </form>
+</div>
+
+{% endblock main %}
+

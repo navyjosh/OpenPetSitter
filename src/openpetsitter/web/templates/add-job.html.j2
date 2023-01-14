@@ -1,0 +1,27 @@
+{% extends "base.html.j2" %}
+{% block hgroup %}
+<h1>Add Job</h1>
+{% endblock hgroup %}
+{% block main %}
+<div class="form-container">
+  <form method="POST" action="{{ url_for('add_job') }}">
+        {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            <div class="row">
+                <div class="col-25">
+                    {{ field.label }}
+                </div>
+                <div class="col-75">
+                    {{ field }}
+                </div>
+            </div>
+        {% endfor %}
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-75"><input type='submit' value="Submit"></div>
+            </div>
+  </form>  
+</div>
+
+{% endblock main %}
+
