@@ -24,7 +24,7 @@ h2 {
     text-align: left;
     text-indent: 1em;
 }
-#title {    
+#banner {    
     left: var(--nav-width);
     text-align: center;    
     height: var(--hgroup-height);    
@@ -174,14 +174,6 @@ span.psw {
   display: flex;  
 }
 
-.form-container {
-  border-radius: 5px;
-  background-color: var(--content-bg-color);
-  border: 1px solid black;
-  padding: 20px;
-  max-width: 500px;
-}
-
 .col-25 {
   float: left;
   width: 25%;  
@@ -200,6 +192,15 @@ span.psw {
 label { 
   display: inline-block;
 }
+
+.form-container {
+  border-radius: 5px;
+  background-color: var(--content-bg-color);
+  border: 1px solid black;
+  padding: 20px;
+  max-width: 500px;
+}
+
 input[type=submit] {
   background-color: var(--content-accent-color);
   color: white;
@@ -212,11 +213,11 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: var(--hover-color)
 }
-/* * {
+ * {
   box-sizing: border-box;
-} */
+} 
 
-input[type=text],input[type=date], select {
+input[type=text],input[type=date], input[type=password], select, textarea {
   width: 100%;
   padding: 0.5em 0 0.5em 0.5em;
   border: 1px solid #ccc;

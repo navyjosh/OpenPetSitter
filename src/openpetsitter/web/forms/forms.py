@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, DateField, SelectField, HiddenField, FieldList, IntegerField, TimeField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, DateField, SelectField, SelectMultipleField, HiddenField, IntegerField, TimeField, TextAreaField
+from wtforms.widgets import CheckboxInput
 
 from wtforms.validators import DataRequired, Length
 from flask_login import current_user
@@ -22,7 +23,7 @@ class DeletePetForm(FlaskForm):
 class AddNewJobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(1, 30, message='Title must be between 1 and 30 characters of length.')])
     description = TextAreaField('Description', validators=[Length(max=5000, message='Maximum Length of 5000 characters')])
-    pets = FieldList(IntegerField('Pets'))
+    pets = SelectMultipleField('Pets')
     date = DateField('Date', validators=[DataRequired()])
-    scheduled_time = TimeField('Time', validators=[DataRequired()])
+    scheduled_time = TimeField('Time', validators=[DataRequired()])    
     

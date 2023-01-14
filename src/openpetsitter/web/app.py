@@ -5,7 +5,7 @@ from openpetsitter.config import CONFIG as cfg
 from openpetsitter.data_model.users import User
 from openpetsitter.data_model.pets import Pet
 from openpetsitter.data_model.jobs import Job
-from openpetsitter.web.forms import LoginForm, PetForm, DeletePetForm
+from openpetsitter.web.forms import LoginForm, PetForm, DeletePetForm, AddNewJobForm
 from flask_login import current_user
 from sqlalchemy.orm import joinedload
 from sqlalchemy import select
@@ -64,10 +64,39 @@ def add_pet():
     return render_template('add-pet.html.j2', form=form)
 
 
+@app.route("/add-job/", methods=['GET', 'POST'])
+@login_required
+def add_job():
+    form = AddNewJobForm(owner=current_user)
+    
+    with cfg.session() as db:            
+        pets = db.query(Pet.id).where(Pet.owner_id == current_user.id).all()
+        form.pets.choices = pets
+    if request.method=='GET':        
+            return render_template('add-job.html.j2', form=form)
+        
+    if form.validate_on_submit():
+        print('test')
+        with cfg.session() as db:
+            job = Job(
+                title=form.title.data,
+                description=form.description.data,
+                pets=form.pets.data,
+                date=form.date.data,
+                time=form.time.data
+            )
+            db.add(job)
+            db.commit()
+
+        flash('Successfully added new job!')
+        return redirect(url_for('my_jobs'))    
+    
+
+
 @app.route("/edit-pet/<int:pet_id>", methods=['GET', 'POST'])
 @login_required
 def edit_pet(pet_id):
-    form = PetForm(owner=current_user)
+    form = PetForm(owner=current_user)    
     if request.method=='POST':        
         if form.validate_on_submit():            
             with cfg.session() as db:
@@ -132,10 +161,7 @@ def my_jobs():
         ).all()
     return render_template('jobs.html.j2', jobs=jobs)
 
-@app.route("/add-job/")
-@login_required
-def add_job():
-    return render_template('jobs.html.j2')
+
 
 
 @app.route("/delete-job/<int:job_id>", methods=['GET', 'POST'])

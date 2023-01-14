@@ -1,1 +1,1 @@
-from .forms import LoginForm, PetForm, DeletePetForm
+from .forms import LoginForm, PetForm, DeletePetForm, AddNewJobForm

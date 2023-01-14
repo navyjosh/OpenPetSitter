@@ -3,22 +3,32 @@
 <h1>Login</h1>
 {% endblock hgroup %}
 {% block main %}
-<div id="loginform">
-<form method="POST" action="{{ url_for('login') }}" class="login-form">
-    {{ form.csrf_token }}
-    {#<div class="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" class="Avatar">
-    </div>#}
-    <div class="container">
-    {{ form.username.label }} {{ form.username }}
-    {{ form.password.label }} {{ form.password }}
-    {{ form.submit }}
-    </div>
-    <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+
+<div class="form-container">
+  <form method="POST" action="{{ url_for('login') }}" class="login-form">
+        {{ form.csrf_token }}    
+        <div class="row">
+          <div class="col-25">
+            {{ form.username.label }}
+          </div>
+          <div class="col-75">
+            {{ form.username }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            {{ form.password.label }}
+          </div>
+          <div class="col-75">
+            {{ form.password }}
+          </div>
+        </div>        
+        <br />
+        <div class="row">
+          {{ form.submit }}
+        </div>          
+  </form>
 </div>
+
 {% endblock main %}
 
