@@ -39,11 +39,14 @@ def test_create_pet():
 def test_create_job():
     with cfg.session() as db:
         user = db.query(User).filter(User.username.like('test_%')).first()
+        pets = db.query(Pet).filter(Pet.owner == user).all()
+        print(pets)
         job = Job(
             owner=user,
             date=date(2022,12,30),
             scheduled_time=time(12),
-            title='Walk the dogs'
+            title='Walk the dogs',
+            pets=pets
         )
         db.add(job)
         db.commit()

@@ -12,6 +12,7 @@ from sqlalchemy import select
 
 
 
+
 app = Flask(__name__)
 login_manager=LoginManager()
 
@@ -70,20 +71,22 @@ def add_job():
     form = AddNewJobForm(owner=current_user)
     
     with cfg.session() as db:            
-        pets = db.query(Pet.id).where(Pet.owner_id == current_user.id).all()
-        form.pets.choices = pets
+        pets = db.query(Pet.id, Pet.name).where(Pet.owner_id == current_user.id).all()
+        form.pets.choices = [(p.id, p.name) for p in pets]
     if request.method=='GET':        
             return render_template('add-job.html.j2', form=form)
-        
+    
+    
     if form.validate_on_submit():
         print('test')
         with cfg.session() as db:
+            pets = db.query(Pet).filter(Pet.id.in_(form.pets.data)).all()
             job = Job(
                 title=form.title.data,
                 description=form.description.data,
-                pets=form.pets.data,
+                pets=pets,
                 date=form.date.data,
-                time=form.time.data
+                scheduled_time=form.scheduled_time.data
             )
             db.add(job)
             db.commit()

@@ -23,7 +23,7 @@ class DeletePetForm(FlaskForm):
 class AddNewJobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(1, 30, message='Title must be between 1 and 30 characters of length.')])
     description = TextAreaField('Description', validators=[Length(max=5000, message='Maximum Length of 5000 characters')])
-    pets = SelectMultipleField('Pets')
+    pets = SelectMultipleField('Pets', coerce=int)
     date = DateField('Date', validators=[DataRequired()])
     scheduled_time = TimeField('Time', validators=[DataRequired()])    
     
