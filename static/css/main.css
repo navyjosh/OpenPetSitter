@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+}
+body {
+    background: #333333;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    width: 100%;
+    min-height: 100%;
+    color: #AAA;
+
+}
+#main {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 12.5px;
+    min-height: 100%;
+    width: 100%;
+}
+#open {
+    display: none;
+}
+#git{
+    white-space: nowrap;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background: #222222;
+    border-radius: 12.5px 12.5px 0 0;
+    height: 5rem;
+    align-items: center;
+    padding: 0 0 0 1rem;
+}
+#terminal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#topnav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.nav-ul {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+}
+.nav-ul a{
+    display:flex;
+    align-items: center;
+    margin-right: 1rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+
+}
+
+.pane-button {
+    font-size: 3em;
+    max-width: 3rem;
+    background: inherit;
+    border: none;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.side-pane {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.side-nav-a{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+#close {
+    align-self: flex-end;
+}
+
+#logo-container{
+    margin: 0;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+
+    background: #c95e2d;
+    display: flex;
+    justify-content: center;
+}
+#logo {
+    margin: 0.25rem 0.25rem 0.25rem 0.25rem;
+    max-width: 75%;
+    max-height: 75%;
+    filter: invert(.7);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 0 10rem 0;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+a:link, a:visited {
+    color:#AAA;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+a:hover {
+    color: #c95e2d;
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+}
+
+
+.content {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 12.5px;
+    padding: 1rem;
+}
+
+.centered-text {
+    text-indent: 0;
+    text-align: center;
+}
+
+p {
+    text-indent: 2em;
+    font-size: 1.2em;
+    width: 90%;
+    max-width: 800px;
+}
+
+
+#footer-text{
+    margin: auto;
+}
+
+
+
+.blink {
+    background: #AAAAAA;
+    animation: blinker 1s linear infinite;
+}
+
+
+
+.green {
+    color: #26a269;
+}
+.blue {
+    color: #124789;
+}
+@media only screen and (max-width: 300px) {
+    .collapse2 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .collapse {
+        display: none;
+    }
+}
+@media only screen and (max-width: 765px) {
+    .nav-ul {
+        display: none;
+    }
+    #open {
+        display: block;
+    }
+
+    header {
+        padding: 0 0 0 0.25rem;
+    }
+
+    #logo-container{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+    }
+    .content {
+        padding: 1rem 0.25rem 1rem 0.25rem;
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

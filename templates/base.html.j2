@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Josh.vet</title>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='fav/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='fav/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='fav/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='fav/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">    
+    <script src="https://kit.fontawesome.com/70a3cd9171.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="side-pane" id="sidenav">
+    <button class="pane-button" id="close" onclick="closeNav()">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <a href="{{ url_for('home') }}" class="side-nav-a">Home</a>
+    <a href="{{ url_for('about') }}" class="side-nav-a">About</a>
+    <a href="{{ url_for('links') }}" class="side-nav-a">Links</a>
+</nav>
+<div class="container" id="main">
+    <header>
+        <a href="{{ url_for('home') }}"><div id="logo-container"><img src="{{ url_for('static', filename='images/j-logo-2.svg') }}" alt="J logo" id="logo"></div></a>
+        <div id="terminal"><span class="green">u<span class="collapse">ser</span>@<span class="collapse">local</span>h<span class="collapse2">ost</span></span><span>:</span><span class="blue">~</span><span id="git">$git pull</span>&nbsp;josh.vet</span><span class="blink">&nbsp;</span></div>
+        <nav id="topnav">
+            <ul class="nav-ul">
+                <a href="{{ url_for('home') }}" class="navlink"><li>Home</li></a>
+                <a href="{{ url_for('about') }}" class="navlink"><li>About</li></a>
+                <a href="{{ url_for('links') }}" class="navlink"><li>Links</li></a>
+            </ul>
+        </nav>
+    </header>
+    <button class="pane-button" id="open" onclick="openNav()"><i class="fas fa-chevron-right"></i></button>
+    <main>
+        <h1 class="green">{% block header %}{% endblock %}</h1>
+        <div class="content">{% block description %}{% endblock %}</div>
+    </main>
+    <footer>
+        <p class="centered-text" id="footer-text">© josh.vet 2021</p>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
